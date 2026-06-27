@@ -1697,7 +1697,7 @@
 
     async function loadQuestions() {
       try {
-        const path = '/api/questions/full';
+        const path = isFullyUnlocked() ? '/api/questions/full' : '/api/questions/preview';
         const data = await apiFetch(path);
         ALL_QUESTIONS = (data && data.questions) || [];
       } catch (e) {
